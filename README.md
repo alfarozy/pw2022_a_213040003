@@ -9,8 +9,9 @@ Email : mr.alfarozy.a.n@gmail.com<br>
 more about me https://alfarozy.id
 
 ## What we do ?
- - Pertemuan 2 (Sintkas PHP Dasar) 
- - Pertemuan 3 (Pengulangan / looping)
+ - Pertemuan 2 (Sintaks PHP Dasar) 
+ - Pertemuan 3 (Control Flow - Pengulangan dan pengkondisian)
+ - Pertemuan 4 
 
 
 
