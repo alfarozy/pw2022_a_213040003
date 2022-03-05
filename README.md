@@ -11,7 +11,7 @@ more about me https://alfarozy.id
 ## What we do ?
  - Pertemuan 2 (Sintaks PHP Dasar) 
  - Pertemuan 3 (Control Flow - Pengulangan dan pengkondisian)
- - Pertemuan 4 
+ - Pertemuan 4 (Function PHP)
 
 
 
