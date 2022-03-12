@@ -12,6 +12,7 @@ more about me https://alfarozy.id
  - Pertemuan 2 (Sintaks PHP Dasar) 
  - Pertemuan 3 (Control Flow - Pengulangan dan pengkondisian)
  - Pertemuan 4 (Function PHP)
+ - Pertemuan 5 (Array)
 
 
 
