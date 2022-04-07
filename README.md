@@ -14,7 +14,7 @@ more about me https://alfarozy.id
  - Pertemuan 4 (Function PHP)
  - Pertemuan 5 (Array Numeric)
  - Pertemuan 6 (Array Asossiatif)
-
+ - Pertemuan 7 (Method GET)
 
 
 ### Playlist PHP Dasar Web Programing Unpas
