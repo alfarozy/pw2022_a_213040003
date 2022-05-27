@@ -25,15 +25,6 @@
                     </div>
                 </div> <!-- col end.// -->
                 <div class="col-lg-6 col-md-12 col-12">
-                    <form action="#" class="">
-                        <div class="input-group">
-                            <input type="search" class="form-control" style="width:40%" placeholder="Cari fasilitas kesehatan...">
-
-                            <button class="btn btn-primary">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </div> <!-- input-group end.// -->
-                    </form>
 
                 </div> <!-- col end.// -->
 
@@ -63,10 +54,10 @@
                         </ul>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link ps-0" href="./list-hospital.html">Rumah sakit </a>
+                        <a class="nav-link ps-0" href="<?= base_url('page/faskes') ?>">Rumah sakit </a>
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link" href="#">Dokter</a>
+                        <a class="nav-link" href="<?= base_url('page/doctor') ?>">Dokter</a>
                     </li>
 
                 </ul>
