@@ -15,6 +15,7 @@
     <!-- Custom css -->
     <link href="<?= assets("frontoffice/css/ui.css?v=2.0") ?>" rel="stylesheet" type="text/css" />
     <link href="<?= assets("frontoffice/css/responsive.css?v=2.0") ?>" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?= assets("backoffice/plugins/toastr/toastr.min.css") ?>">
 
     <!-- Font awesome 5 -->
     <link href="<?= assets("frontoffice/fonts/fontawesome/css/all.min.css") ?>" type="text/css" rel="stylesheet">

@@ -1,3 +1,14 @@
+<?php
+if (session('role') == 'doctor') :
+    if (!auth('id_hospital')) :
+
+?>
+        <div class="alert alert-primary txet-center " style="border-radius:0;text-align:center;" role="alert">
+            Akun anda <b>belum aktif</b>, silahkan lengkapi profil anda dan hubungi admin untuk melakukan aktifasi
+        </div>
+<?php endif;
+endif; ?>
+
 <header class="section-header">
 
     <section class="header-main fixed-top">
@@ -25,7 +36,15 @@
                     </div>
                 </div> <!-- col end.// -->
                 <div class="col-lg-6 col-md-12 col-12">
+                    <form action="<?= base_url('page/faskes') ?>" class="">
+                        <div class="input-group">
+                            <input type="search" name="search" class="form-control" style="width:55%" placeholder="Cari fasilitas kesehatan">
 
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div> <!-- input-group end.// -->
+                    </form>
                 </div> <!-- col end.// -->
 
             </div> <!-- row end.// -->

@@ -1,4 +1,4 @@
 <?php
-if (session('role') == 'doctor') {
-    redirect(base_url());
+if (session('role') != 'doctor') {
+    redirect(base_url('errors/403'));
 }

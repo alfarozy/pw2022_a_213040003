@@ -54,6 +54,7 @@
 <script src="<?= assets("backoffice/plugins/datatables-responsive/js/responsive.bootstrap4.min.js") ?>"></script>
 <script src="<?= assets("backoffice/plugins/toastr/toastr.min.js") ?>"></script>
 <script src="<?= assets("backoffice/plugins/select2/js/select2.full.min.js") ?>"></script>
+
 <script>
     $('.rupiah').on('keyup', function(e) {
         $(this).val(formatRupiah($(this).val(), "Rp"));
