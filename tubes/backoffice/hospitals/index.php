@@ -43,6 +43,10 @@ $data = Core::get($table);
                                     <h3 class="card-title mt-2 d-none d-md-block"><?= $title ?></h3>
                                 </div>
                                 <div class="col-sm-6 col-lg-6 text-center text-md-right ">
+                                    <a target="_BLANK" href="<?= base_url('backoffice/laporan/faskes?type=excel') ?>" class="btn btn-outline-success btn-sm m-1"> <i class="fas fa-file-excel"></i>
+                                        Export Excel</a>
+                                    <a target="_BLANK" href="<?= base_url('backoffice/laporan/faskes?type=pdf') ?>" class="btn btn-outline-danger btn-sm m-1"> <i class="fas fa-file-pdf"></i>
+                                        Export PDF</a>
                                     <a href="./create" class="btn btn-success btn-sm m-1"> <i class="fa fa-plus"></i>
                                         Tambah
                                         Data</a>

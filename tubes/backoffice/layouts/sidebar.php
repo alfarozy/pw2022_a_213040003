@@ -9,7 +9,7 @@
     <div class="sidebar">
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="<?= assets("backoffice/") ?>dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+                <img src="<?= assets("backoffice/") ?>dist/img/alfarozy.svg" class="img-circle elevation-2 shadow-none" alt="User Image">
             </div>
             <div class="info">
                 <a href="#" class="d-block">Koji Xenpai</a>
@@ -98,23 +98,7 @@
                         </p>
                     </a>
                 </li>
-                <li class="nav-header">Laporan</li>
-                <li class="nav-item">
-                    <a href="/pages/calendar.html" class="nav-link">
-                        <i class="nav-icon far fa-file-alt"></i>
-                        <p>
-                            Laporan data pengguna
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="pages/calendar.html" class="nav-link">
-                        <i class="nav-icon far fa-file-alt"></i>
-                        <p>
-                            Laporan data pengguna
-                        </p>
-                    </a>
-                </li>
+
                 <li class="nav-item border-top">
                     <a href="<?= base_url("auth/logout") ?>" class="nav-link">
                         <i class="nav-icon fas fa-power-off"></i>

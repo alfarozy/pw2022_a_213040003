@@ -3,6 +3,11 @@
 require_once "./DashboardController.php";
 $title = "Dashboard admin";
 $page = "dashboard";
+
+$faskes = Core::query("SELECT count(id) as 'count' FROM faskes");
+$users = Core::query("SELECT count(id) as 'count' FROM users");
+$doctors = Core::query("SELECT count(id) as 'count' FROM doctors");
+$admin = Core::query("SELECT count(id) as 'count' FROM admin");
 ?>
 <!-- Header -->
 <?php include_once('./layouts/header.php') ?>
@@ -36,12 +41,12 @@ $page = "dashboard";
                     <!-- small box -->
                     <div class="small-box bg-info">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3><?= $faskes['count'] ?></h3>
 
-                            <p>New Orders</p>
+                            <p>Fasilitas kesehatan</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="ion ion-hospital"></i>
                         </div>
                     </div>
                 </div>
@@ -50,9 +55,9 @@ $page = "dashboard";
                     <!-- small box -->
                     <div class="small-box bg-success">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
+                            <h3><?= $doctors['count'] ?></h3>
 
-                            <p>Bounce Rate</p>
+                            <p>Dokter terdaftar</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -64,9 +69,9 @@ $page = "dashboard";
                     <!-- small box -->
                     <div class="small-box bg-warning">
                         <div class="inner">
-                            <h3>44</h3>
+                            <h3><?= $users['count'] ?></h3>
 
-                            <p>User Registrations</p>
+                            <p>Pengguna terdaftar</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
@@ -78,9 +83,9 @@ $page = "dashboard";
                     <!-- small box -->
                     <div class="small-box bg-danger">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3><?= $admin['count'] ?></h3>
 
-                            <p>Unique Visitors</p>
+                            <p>Admin</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>

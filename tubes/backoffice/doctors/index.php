@@ -46,7 +46,10 @@ $doctors = Core::join('doctors', 'specialists', "doctors.name as doctor_name, do
                                     <h3 class="card-title mt-2 d-none d-md-block"><?= $title ?></h3>
                                 </div>
                                 <div class="col-sm-6 col-lg-6 text-center text-md-right ">
-
+                                    <a target="_BLANK" href="<?= base_url('backoffice/laporan/doctors?type=excel') ?>" class="btn btn-outline-success btn-sm m-1"> <i class="fas fa-file-excel"></i>
+                                        Export Excel</a>
+                                    <a target="_BLANK" href="<?= base_url('backoffice/laporan/doctors?type=pdf') ?>" class="btn btn-outline-danger btn-sm m-1"> <i class="fas fa-file-pdf"></i>
+                                        Export pdf</a>
                                 </div>
                             </div>
                         </div>
