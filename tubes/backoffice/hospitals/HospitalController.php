@@ -30,7 +30,7 @@ if (isset($_POST['create'])) {
                 'id_faskes'    => $faskes['id']
             ]);
         }
-        flash('success', 'Item berhasil diaktifkan');
+        flash('success', 'Berhasil menambahkan data Fasilitas Kesehatan');
         redirect(base_url("backoffice/hospitals"));
     } catch (\Throwable $th) {
         //throw $th;
