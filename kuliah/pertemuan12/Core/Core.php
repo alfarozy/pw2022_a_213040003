@@ -14,9 +14,9 @@ class Core
     {
         $config = [
             'app' => [
-                'name' => "Nusantara Hospital Center",
-                'url'  => "http://localhost/~koji/pw2022_213040003/tubes",
-                'debug' => true // if production set false,
+                'name' => "Pertemuan 13",
+                'url'  => "http://localhost/~koji/pw2022_213040003/kuliah/pertemuan12",
+                'debug' => false // if production set false,
             ],
             'author' => [
                 'name'  => "Muhammad Alfarozi",
@@ -44,7 +44,7 @@ class Core
     {
         $db =  [
             'hostname'  => 'localhost', //database hostname
-            'database'  => 'project_nusantarahospital', //database name
+            'database'  => 'project_pw213040003', //database name
             'username'  => 'root',    // database username
             'password'  => 'sandwich', //database password
         ];
@@ -331,8 +331,7 @@ class Core
     {
 
         $format_file = ['png', 'jpg', 'jpeg'];
-        $format_file_input = explode('.', $file['name']);
-        $format_file_input = strtolower(end($format_file_input));
+        $format_file_input = pathinfo($file['name'], PATHINFO_EXTENSION);
 
         if (!in_array($format_file_input, $format_file)) {
             $response = [
@@ -470,6 +469,7 @@ function redirect($url)
     header("location:" . $url);
     exit();
 }
+
 function flash($status = '', $msg = '')
 {
     if (isset($_SESSION[$status])) {
@@ -480,6 +480,7 @@ function flash($status = '', $msg = '')
         $_SESSION[$status] = $msg;
     }
 }
+
 function session($key = null, $value = null)
 {
     if (!empty($key) && !empty($value)) {
