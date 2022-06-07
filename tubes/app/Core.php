@@ -13,7 +13,7 @@ class Core
     public static function config(String $value)
     {
         $config = [
-            'app' => [
+             'app' => [
                 'name' => "Nusantara Hospital Center",
                 'url'  => "http://localhost/~koji/pw2022_213040003/tubes",
                 'debug' => true // if production set false,
@@ -83,12 +83,13 @@ class Core
     {
         try {
             $result = mysqli_query(self::connect(), $query);
-
+           
             $rows = [];
             while ($array = mysqli_fetch_assoc($result)) {
                 $rows[] = $array;
             }
             return $rows;
+            
         } catch (\Throwable $th) {
             if (self::config('app.debug')) {
 
@@ -213,6 +214,8 @@ class Core
             $result = mysqli_query(self::connect(), $query);
             $result = mysqli_fetch_assoc($result);
             return $result;
+        
+        
         } catch (\Throwable $th) {
             if (self::config('app.debug')) {
 

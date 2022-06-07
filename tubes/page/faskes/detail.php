@@ -12,7 +12,7 @@ $district = Core::show('districts', ['id' => $data['district_id']]);
 $area = Core::show('areas', ['id' => $data['area_id']]);
 $tipe = Core::show('tipe_faskes', ['id' => $data['tipe_faskes_id']]);
 $title = $data['name'];
-$doctors = Core::get('doctors', ['id_hospital' => $data['id'], 'enabled' => 1]);
+$doctors = Core::get('doctors', ['id_hospital' => $secure_id, 'enabled' => 1]);
 $fasilitas_medis = Core::join('fasilitas_faskes', 'fasilitas', '*', "id_fasilitas = fasilitas.id WHERE `id_faskes`={$data['id']}  AND type='medis'");
 $fasilitas_umum = Core::join('fasilitas_faskes', 'fasilitas', '*', "id_fasilitas = fasilitas.id WHERE `id_faskes`={$data['id']}  AND type='umum'");
 if (!$data) {
@@ -210,7 +210,8 @@ if (!$data) {
                     </div>
                 </div>
                 <?php
-                $nearme = Core::query("SELECT * FROM faskes WHERE `district_id`={$district['id']} AND `faskes`.`enabled` = 1 ORDER BY RAND() LIMIT 4");
+                $nearme = Core::queryGet("SELECT * FROM faskes WHERE `district_id`={$district['id']} AND `faskes`.`enabled` = 1 ORDER BY RAND() LIMIT 4");
+                
                 if ($nearme) :
                 ?>
                     <aside class="col-lg-4">
@@ -264,6 +265,7 @@ if (!$data) {
                 url: "<?= base_url('api/doctors') ?>",
                 data: {
                     search: search,
+                    hospital:<?= $data ['id'] ?>
                 },
                 success: function(result) {
                     $('.list-doctors').html(result);

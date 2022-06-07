@@ -15,7 +15,7 @@ more about me https://alfarozy.id
  - Pertemuan 5 (Array Numeric)
  - Pertemuan 6 (Array Asossiatif)
  - Pertemuan 7 (Method GET)
- - Pertemuan 12 (CRUD - With image upload file)
+ - Pertemuan 13 (CRUD - With image upload file)
 
 
 ### Playlist PHP Dasar Web Programing Unpas

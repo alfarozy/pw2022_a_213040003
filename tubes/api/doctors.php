@@ -5,9 +5,11 @@ require_once "../app/Core.php";
 //> get cities by province
 if (isset($_GET['search'])) {
     $search = Core::request($_GET['search']);
-    $data = Core::query("SELECT doctors.*, `specialists`.`name` as spesialist FROM doctors 
+    $hospital = Core::request($_GET['hospital']);
+    $data = Core::queryGet("SELECT doctors.*, `specialists`.`name` as spesialist FROM doctors 
     INNER JOIN specialists ON id_specialist = `specialists`.`id`
-    WHERE `doctors`.`name` LIKE '%$search%' OR `specialists`.`name` LIKE '%$search%'");
+    WHERE `doctors`.`id_hospital`=$hospital AND `doctors`.`name` LIKE '%$search%' OR `specialists`.`name` LIKE '%$search%'");
+    
     $output = null;
     if ($data) {
 
@@ -16,13 +18,13 @@ if (isset($_GET['search'])) {
             $output .= '<div class="row gy-3">';
             $output .= '<div class="col-md-7">';
             $output .= '<figure class="itemside">';
-            $output .= '<a href="' . base_url(`page/doctor/profil?id=` . $item['id']) . '" class="aside"><img src="' . assets($item['img']) . '" class="img-md img-thumbnail"></a><figcaption class="info">';
+            $output .= '<a href="' . base_url("page/doctor/profil?id=" . $item['id']) . '" class="aside"><img src="' . assets($item['img']) . '" class="img-md img-thumbnail"></a><figcaption class="info">';
 
-            $output .= '<a href="' . base_url(`page/doctor/profil?id=` . $item['id']) . '" class="title"><b>' . $item['name'] . '</b></a>';
+            $output .= '<a href="' . base_url("page/doctor/profil?id=" . $item['id']) . '" class="title"><b>' . $item['name'] . '</b></a>';
             $output .= '<div> <a href="#" class="btn-link">' . $item['spesialist'] . '</a></div>';
             $output .= '</figcaption> </figure></div> ';
 
-            $output .= '<div class="col-md-5 text-end"><a href="' . base_url(`page/doctor/profil?id=` . $item['id']) . '" class="btn btn-light" type="button">Lihat Profile</a></div>';
+            $output .= '<div class="col-md-5 text-end"><a href="' . base_url("page/doctor/profil?id=" . $item['id']) . '" class="btn btn-light" type="button">Lihat Profile</a></div>';
             $output .= ' </div> </article> ';
         }
     } else {

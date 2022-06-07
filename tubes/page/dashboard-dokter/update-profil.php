@@ -7,7 +7,7 @@ require "../../app/middleware/DoctorMiddleware.php";
 $email = session('email');
 $doctor = Core::query("SELECT doctors.*, `specialists`.`name` as specialist FROM doctors 
     INNER JOIN specialists ON id_specialist = `specialists`.`id`
-    WHERE `doctors`.`enabled` = 1 AND `email`= '$email'");
+    WHERE `email`= '$email'");
 
 $title = "Profil " . $doctor['name'];
 $faskes = Core::get('faskes', ['enabled' => 1]);

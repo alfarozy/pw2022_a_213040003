@@ -23,14 +23,14 @@ if (isset($_POST['create'])) {
             'slug'  => Core::slug($_POST['name']),
             'image' => $img['message']
         ];
-        $faskes = Core::insert($table, $data);
+        $faskes = Core::insert('faskes', $data);
         foreach ($_POST['fasilitas'] as $item) {
             Core::insertTo('fasilitas_faskes', [
                 'id_fasilitas' => $item,
                 'id_faskes'    => $faskes['id']
             ]);
         }
-        flash('success', 'Berhasil menambahkan data Fasilitas Kesehatan');
+        flash('success', 'Berhasil menambahkan fasilitas kesehatan');
         redirect(base_url("backoffice/hospitals"));
     } catch (\Throwable $th) {
         //throw $th;

@@ -5,14 +5,30 @@ require "../../app/Core.php";
 // use Query;
 
 
-if (isset($_GET['search'])) {
+if (isset($_GET['search']) && isset($_GET['specialist'])) {
+    $search = Core::request(htmlspecialchars($_GET['search']));
+    $spesialist = Core::request(htmlspecialchars($_GET['specialist']));
+
+    $data = Core::query("SELECT * FROM doctors WHERE name LIKE '%$search%' AND enabled = 1 AND 'id_specialist' = $spesialist");
+    
+    
+}else if(isset($_GET['search'])){
     $search = Core::request(htmlspecialchars($_GET['search']));
     $data = Core::query("SELECT * FROM doctors WHERE name LIKE '%$search%' AND enabled = 1");
+    
 } else {
+    $spesialist = Core::request(htmlspecialchars($_GET['specialist']));
+    if(isset($_GET['specialist'])){
+        
+    $data = Core::get("doctors", ['enabled' => 1, 'id_specialist' => $spesialist]);
+    }else{
     $data = Core::get("doctors", ['enabled' => 1]);
+        
+    }
 }
-
 $title = "Daftar dokter";
+
+$spesialists = Core::get('specialists');
 
 ?>
 
@@ -45,9 +61,13 @@ $title = "Daftar dokter";
                 <div class="card-body p-lg-5 bg-cover">
                     <div class="card card-body shadow">
                         <form>
+                            <?php if(isset($_GET['specialist'])): ?>
+                            <input type="hidden" value="<?= htmlspecialchars($_GET['specialist']) ?>" name="specialist" >
+                            <?php endif;?>
                             <div class="row g-2">
                                 <div class="col-xl col-lg-6 flex-grow">
                                     <div class="input-group">
+                                        
                                         <input type="text" name="search" value="<?php
                                                                                 if (isset($_GET['search'])) {
                                                                                     echo htmlspecialchars($_GET['search']);
@@ -66,10 +86,36 @@ $title = "Daftar dokter";
             </main> <!-- card -->
             <!-- =================== COMPONENT 1 .// ================== -->
 
-            <br><br>
+            <br>
+            <div class="row justify-content-end">
+                <div class="col-lg-5 text-end">
+                    <div class="dropdown">
+                      <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                        <?php if (isset($_GET['specialist'])) : ?>
+                                <?php 
+                                
+$sname = Core::show('specialists',['id'=>$_GET['specialist']]);
+                         echo $sname['name'];       
+                                ?>
+                            <?php else : ?>
+                                Pilih spesialis
+
+                            <?php endif; ?>
+                      </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                          <li ><a href="./" class="dropdown-item">Semua spesialis</a></li>
+                          <?php foreach ($spesialists as $item) : ?>
+                            <li><a class="dropdown-item" href="?specialist=<?= $item['id'] ?>"><?= $item['name'] ?></a></li>
+                        <?php endforeach; ?>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+            <br>
 
             <!-- =================== COMPONENT 2 ====================== -->
             <div class="row">
+                <?php if(!empty($data)):?>
                 <?php foreach ($data as $item) : ?>
                     <?php
                     $spesialist = Core::show('specialists', ['id' => $item['id_specialist']]);
@@ -86,6 +132,15 @@ $title = "Daftar dokter";
                         </div>
                     </div>
                 <?php endforeach; ?>
+                <?php else:?>
+                <div class="col-lg-12">
+                        <div class="card">
+                            <article class="p-4 p-xl-5 text-center">
+                                <h2>Dokter tidak ditemukan</h2>
+                            </article>
+                        </div>
+                    </div>
+                <?php endif; ?>
             </div> <!-- row.// -->
             <!-- =================== COMPONENT 2 .// ================== -->
 
