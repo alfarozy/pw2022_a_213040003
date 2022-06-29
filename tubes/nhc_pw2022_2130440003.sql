@@ -2,10 +2,10 @@
 -- version 5.1.3
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 22, 2022 at 10:22 AM
--- Server version: 10.6.7-MariaDB-3
--- PHP Version: 8.1.2
+-- Host: sdb-j.hosting.stackcp.net
+-- Generation Time: Jun 29, 2022 at 10:29 AM
+-- Server version: 10.4.20-MariaDB-log
+-- PHP Version: 7.1.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `project_nusantarahospital`
+-- Database: `nusantarahospital-313930538e`
 --
 
 -- --------------------------------------------------------
@@ -40,7 +40,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `name`, `email`, `password`, `enabled`) VALUES
-(1, 'Muhammad Alfarozi', 'admin@admin.com', '$2y$10$O6c5BuZAxlkuj6IMw1pOb.DjqagGvBdIY7jvQbfY4msIbJo6pLT12', 1);
+(1, 'Muhammad Alfarozi', 'admin@admin.com', '$2y$10$O6c5BuZAxlkuj6IMw1pOb.DjqagGvBdIY7jvQbfY4msIbJo6pLT12', 1),
+(7, 'Koji Xenpai', 'koji@gmail.com', '$2y$10$RHFM1Bk6EU.5ZYMTX6eIIOw8ssbeD49aFinfuIMYCT6kNAfdQGYJO', 1);
 
 -- --------------------------------------------------------
 
@@ -88845,6 +88846,7 @@ INSERT INTO `districts` (`id`, `name`, `city_id`) VALUES
 CREATE TABLE `doctors` (
   `id` int(11) NOT NULL,
   `id_specialist` int(11) DEFAULT NULL,
+  `id_hospital` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(150) NOT NULL,
@@ -88855,6 +88857,18 @@ CREATE TABLE `doctors` (
   `enabled` int(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `doctors`
+--
+
+INSERT INTO `doctors` (`id`, `id_specialist`, `id_hospital`, `name`, `email`, `password`, `img`, `whatsapp`, `description`, `price_kons`, `enabled`, `created_at`) VALUES
+(1, 2, 1, 'Muhammad Alfarozi', 'mr.alfarozy.a.n@gmail.com', '$2y$10$NKDXp4vTpC6CwgJ4tacGUehPse3auenYY/sQINP.vDsLArX8VE7eG', 'img/doctors/62930671718e8.png', '081268174381', '<p>loLorem ipsum</p><p>&nbsp;dolor sit amet consectetur, adipisicing elit. Dignissimos, quidem aliquid. Sapiente eaque repudiandae neque <strong>quisquam </strong>ipsum est, harum, tempora adipisci assumenda placeat laborum molestias nulla quibusdam recusandae eius quo?Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, quidem aliquid. Sapiente eaque repudiandae neque quisquam ipsum est, harum, tempora adipisci assumenda placeat laborum molestias nulla quibusdam recusandae eius quo?</p><h3>Lorem ipsum dol</h3><p>or sit amet consectetur, adipisicing elit. Dignissimos, quidem aliquid. Sapiente eaque repudiandae neque quisquam ipsum est, harum, tempora adipisci assumenda placeat laborum molestias nulla quibusdam recusandae eius quo?Lorem ipsum dolor</p><p>&nbsp;sit amet consectetur, adipisicing elit. Dignissimos, quidem aliquid. Sapiente eaque repudiandae neque quisquam ipsum est, harum, tempora adipisci assumenda placeat laborum molestias nulla quibusdam recusandae eius quo?</p><p><a href=\"https://me.alfarozy.id\">https://me.alfarozy.id</a></p><p>&nbsp;</p>', 0, 1, '2022-05-29 05:36:49'),
+(2, 5, 1, 'Dr. Stephen Vincent Strange', 'strange@avenger.com', '$2y$10$O/p/aGBEMTdPPcSyRKUCne0XYBycCTLexqyve4vawUkyxWFFvVxfi', 'img/doctors/62930797e7dfc.jpg', '', '<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, quidem aliquid. Sapiente eaque repudiandae neque quisquam ipsum est, harum, tempora adipisci assumenda placeat laborum molestias nulla quibusdam recusandae eius quo?<br>&nbsp;</p><h3>Anggota avenger</h3><p>&nbsp;</p><p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos, quidem aliquid. Sapiente eaque repudiandae neque quisquam ipsum est, harum, tempora adipisci assumenda placeat laborum molestias nulla quibusdam recusandae eius quo?<br>&nbsp;</p><p>&nbsp;</p>', 1550000, 1, '2022-05-29 05:46:05'),
+(3, 2, 0, 'aku', 'aku@gmail.com', '$2y$10$a47gvhTojRf9NVLAN9GZn.yY/0mEu0TnUUXnwihJoAUHD6jFOv/Gq', 'img/doctors/default.png', NULL, NULL, NULL, 0, '2022-05-31 01:25:23'),
+(4, 7, 1, 'Vision', 'vision@avenger.com', '$2y$10$o6KxsFDyaGdTTy8AB0m8f.zMZvBOmWxlbHIGdsDhvYyvYi.cX661.', 'img/doctors/6296233887d96.jpg', '', '', 200000, 1, '2022-06-07 05:57:19'),
+(5, 4, 2, 'Dr. Bruce Banner', 'bruce@avenger.com', '$2y$10$z3/cg29jC3Lr8aA/LLJtkeCTU2XQ6U76rMzgF.uSkAefeS5QjDx5S', 'img/doctors/629ee82a71327.jpeg', '', '<p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, fuga dolorem exercitationem aspernatur pariatur cum nam sit laudantium et voluptas doloribus ipsa ex, facilis explicabo fugit totam minus? Magni, laborum.</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, fuga dolorem exercitationem aspernatur pariatur cum nam sit laudantium et voluptas doloribus ipsa ex, facilis explicabo fugit totam minus? Magni, laborum.</p><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ducimus, fuga dolorem exercitationem aspernatur pariatur cum nam sit laudantium et voluptas doloribus ipsa ex, facilis explicabo fugit totam minus? Magni, laborum.</p><h3>HULK</h3>', 1250000, 1, '2022-06-07 05:58:50'),
+(6, 10, 2, 'Dr. Indra', 'indra@gmail.com', '$2y$10$Mt1s6z9e6uaHf2dcolHdoOtH.EKSBotlXgkBd8kNX6UAa/sz9wWHy', 'img/doctors/default.png', '87123763434', '<p>lorem ipsum laksjdlkas kksad asd</p>', 250000, 1, '2022-06-14 04:07:35');
 
 -- --------------------------------------------------------
 
@@ -88870,6 +88884,23 @@ CREATE TABLE `fasilitas` (
   `enabled` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `fasilitas`
+--
+
+INSERT INTO `fasilitas` (`id`, `name`, `type`, `img`, `enabled`) VALUES
+(1, 'Ambulan', 'medis', 'img/icons/6292311a0f89c.png', 1),
+(2, 'Laboratorium', 'medis', 'img/icons/6292313559fa5.png', 1),
+(3, 'Radiologi', 'medis', 'img/icons/62923167256aa.png', 1),
+(4, 'Musholla', 'umum', 'img/icons/6292319907399.png', 1),
+(5, 'Layanan 24 Jam', 'umum', 'img/icons/629231cc70f67.png', 1),
+(6, 'Ruang tunggu', 'umum', 'img/icons/629231db0c9c0.png', 1),
+(7, 'Parkir', 'umum', 'img/icons/629231f6ad3b3.png', 1),
+(8, 'Kafe / Kantin', 'umum', 'img/icons/6292320a319e3.png', 1),
+(9, 'ATM', 'umum', 'img/icons/6292321d0d04e.png', 1),
+(10, 'Wifi gratis', 'umum', 'img/icons/62923235ed418.png', 1),
+(11, 'Parkir', 'umum', 'img/icons/62a809cd442b3.png', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -88880,6 +88911,37 @@ CREATE TABLE `fasilitas_faskes` (
   `id_faskes` int(11) NOT NULL,
   `id_fasilitas` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `fasilitas_faskes`
+--
+
+INSERT INTO `fasilitas_faskes` (`id_faskes`, `id_fasilitas`) VALUES
+(1, 1),
+(1, 2),
+(1, 5),
+(1, 6),
+(1, 7),
+(2, 1),
+(2, 4),
+(2, 5),
+(2, 6),
+(2, 7),
+(2, 10),
+(3, 6),
+(3, 7),
+(4, 1),
+(4, 3),
+(4, 4),
+(4, 6),
+(4, 7),
+(5, 1),
+(5, 2),
+(5, 4),
+(5, 5),
+(5, 6),
+(5, 7),
+(5, 10);
 
 -- --------------------------------------------------------
 
@@ -88896,11 +88958,23 @@ CREATE TABLE `faskes` (
   `tipe_faskes_id` int(11) NOT NULL,
   `image` varchar(250) NOT NULL,
   `name` varchar(200) NOT NULL,
+  `slug` varchar(200) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `address` text NOT NULL,
   `description` text NOT NULL,
   `enabled` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `faskes`
+--
+
+INSERT INTO `faskes` (`id`, `province_id`, `city_id`, `district_id`, `area_id`, `tipe_faskes_id`, `image`, `name`, `slug`, `phone`, `address`, `description`, `enabled`) VALUES
+(1, 4, 78, 1067, 15156, 1, 'img/faskes/6292d35f0ee49.jpg', 'RS Awal Bros A. Yani Pekanbaru', 'rs-awal-bros-a-yani-pekanbaru', '076129000', 'Jl. Jend. Ahmad Yani No.73, Tanah Datar, Pekanbaru', '<p>Rumah Sakit Awal Bros A. Yani didirikan pada 15 Oktober 2007. Alamat rumah sakit ini yaitu di Jl. Ahmad Yani, Pekanbaru, tepatnya berada di seberang Kodim 0301 Pekanbaru.</p><p>&nbsp;Pelayanan RS Awal Bros A. Yani sangat lengkap dan profesional karena mengutamanan layanan berkualitas. Tersedia paket pemeriksaan kesehatan (medical check up) lengkap sesuai kebutuhan masyarakat.&nbsp;</p><p>Berkomitmen memenuhi kebutuhan layanan kesehatan masyarakat, rumah sakit di Pekanbaru ini selalu memberikan layanan diagnosis, tindakan medis, terapi, dan rehabilitasi yang berkualitas. Cek informasi lengkap mengenai Rumah Sakit Awal bros A. Yani Pekanbaru di DokterSehat. Ketahui jadwal praktik dokter, tindakan medis, ketersediaan kamar berserta biayanya, hingga biaya konsultasi dokter. Kini buat janji dengan dokter di rumah sakit bisa dilakukan secara online</p>', 1),
+(2, 12, 171, 2046, 25970, 1, 'img/faskes/6293036638eb9.png', 'RS Asyifa - Bogor', 'rs-asyifa---bogor', '0812323', 'jln. angrek no 8', '<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore excepturi, non, corporis temporibus repellendus placeat eius provident eligendi vel eaque eveniet nostrum optio voluptatibus atque, porro magnam expedita necessitatibus quis!<br>&nbsp;</p><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore excepturi, non, corporis temporibus repellendus placeat eius provident eligendi vel eaque eveniet nostrum optio voluptatibus atque, porro magnam expedita necessitatibus quis!<br>&nbsp;</p><p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Labore excepturi, non, corporis temporibus repellendus placeat eius provident eligendi vel eaque eveniet nostrum optio voluptatibus atque, porro magnam expedita necessitatibus quis!<br>&nbsp;</p>', 1),
+(3, 12, 172, 2528, 27395, 4, 'img/faskes/629eecc4927cf.jpg', 'Drive Thru COVID-19 Caman Raya', 'drive-thru-covid-19-caman-raya', '6285574677403', 'Jl. Caman Raya No.32, RT.002 RW.005, Jatibenening, Kec. Pondokgede, Kota Bekasi, Jawa Barat', '<p>Drive Thru COVID-19 Caman Raya merupakan pelayanan spesial dari Halodoc yang mencoba memenuhi kebutuhan masyarakat akan pemeriksaan Kesehatan dalam hal ini layanan tes pemeriksaan COVID-19 yang melayani Drive Thru COVID-19 Test dari jam 08.00 - 20.00. Dalam layanan ini Halodoc bekerjasama dengan klinik dan laboratorium rekanan yang akan memberikan layanan pemeriksaan tes COVID-19 dengan metode drive thru. Beberapa pemeriksaan yang diberikan dalam layanan ini adalah pemeriksaan COVID-19 dengan metode PCR dan pemeriksaan COVID-19 dengan metode Swab Antigen.</p>', 1),
+(4, 11, 154, 1899, 24985, 2, 'img/faskes/629eed72089b4.png', 'Amalia Medical Center', 'amalia-medical-center', '0218090762', 'Jl. Dewi Sartika No.364A, RT.3/RW.4, Cawang, Kec. Kramat jati, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13630', '<p>Amalia Medical Center merupakan klinik yang berada di Jl. Dewi Sartika 364 A Cawang Jakarta Timur. Amalia Medical Center saat ini menyediakan layanan konsultasi dokter, tes COVID-19, dan vaksinasi.</p><p>&nbsp;</p>', 1),
+(5, 4, 78, 1028, 14971, 1, 'img/faskes/62a7fd9329f5f.png', 'Rumah sakit Asyifa Peken baru', 'rumah-sakit-asyifa-peken-baru', '98674927347', 'jln. Jendral Sudirman no 8', '<p>lorem ipsum&nbsp;</p><p>&nbsp;</p><p>asdj lkasjd klasd jlas</p><p>l dakjsda sdasd</p><p>&nbsp;</p><p><strong>asdnasjdjkash dkjas dad</strong></p>', 0);
 
 -- --------------------------------------------------------
 
@@ -88966,6 +89040,22 @@ CREATE TABLE `specialists` (
   `enabled` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `specialists`
+--
+
+INSERT INTO `specialists` (`id`, `name`, `slug`, `enabled`) VALUES
+(1, 'Spesialis jantung', 'spesialis-jantung', 1),
+(2, 'Dokter Umum', 'dokter-umum', 1),
+(3, 'Spesialis Kebidanan Kandungan', 'spesialis-kebidanan-kandungan', 1),
+(4, 'Spesialis Penyakit Dalam', 'Spesialis Penyakit Dalam', 1),
+(5, 'Bedah Saraf', 'bedah-saraf', 1),
+(6, 'Bedah Umum', 'bedah-umum', 1),
+(7, 'Spesialis Mata', 'spesialis-mata', 1),
+(8, 'Spesialis Anak', 'spesialis-anak', 1),
+(9, 'Spesialis Penyakit Kulit dan Kelamin', 'spesialis-penyakit-kulit-dan-kelamin', 1),
+(10, 'Spesialis Telinga Hidung Tenggorokan (THT)', 'spesialis-telinga-hidung-tenggorokan-tht-', 1);
+
 -- --------------------------------------------------------
 
 --
@@ -89003,6 +89093,16 @@ CREATE TABLE `users` (
   `enabled` int(1) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `img`, `enabled`, `created_at`) VALUES
+(26, 'Muhammad Alfarozi', 'mr.alfarozy.a.n@gmail.com', '$2y$10$jVzM.0hdUfbDxA8qs07g/O.XPvB89GbR5oloXa5NGuu201IDewgEm', 'img/users/62923feab254c.png', 1, '2022-06-07 06:00:44'),
+(27, 'Emilia Paradila', 'emiliapsupriatna@gmail.com', '$2y$10$rXbe8CwOPjGzS7CrasFntey0se50bS7r1hpavyP6Jw89Y10vjEVSq', 'img/users/default.png', 1, '2022-06-07 06:00:47'),
+(28, 'Thor', 'thor@avenger.com', '$2y$10$xaEhWesKcqZML85bgLcX4ugKyzvFWhkKcMtpwx7ZdVATPPCECILqG', 'img/users/629623e73e3df.jpg', 1, '2022-06-07 06:00:51'),
+(29, 'user123', 'user123@gmail.com', '$2y$10$OfVzLPOvK5c47BDzRiunOumaM3MOB4DUMww3LjUTU6YgmlCNIuKoe', 'img/users/62a73d6575665.jpg', 0, '2022-06-13 13:36:37');
 
 --
 -- Indexes for dumped tables
@@ -89082,7 +89182,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `areas`
@@ -89106,19 +89206,19 @@ ALTER TABLE `districts`
 -- AUTO_INCREMENT for table `doctors`
 --
 ALTER TABLE `doctors`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `fasilitas`
 --
 ALTER TABLE `fasilitas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `faskes`
 --
 ALTER TABLE `faskes`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `provinces`
@@ -89130,7 +89230,7 @@ ALTER TABLE `provinces`
 -- AUTO_INCREMENT for table `specialists`
 --
 ALTER TABLE `specialists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tipe_faskes`
@@ -89142,7 +89242,7 @@ ALTER TABLE `tipe_faskes`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
