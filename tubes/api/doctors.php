@@ -6,9 +6,12 @@ require_once "../app/Core.php";
 if (isset($_GET['search'])) {
     $search = Core::request($_GET['search']);
     $hospital = Core::request($_GET['hospital']);
+       
     $data = Core::queryGet("SELECT doctors.*, `specialists`.`name` as spesialist FROM doctors 
     INNER JOIN specialists ON id_specialist = `specialists`.`id`
-    WHERE `doctors`.`id_hospital`=$hospital AND `doctors`.`name` LIKE '%$search%' OR `specialists`.`name` LIKE '%$search%'");
+    WHERE `doctors`.`id_hospital`=$hospital AND (`doctors`.`name` LIKE '%$search%' OR `specialists`.`name` LIKE '%$search%')");
+    
+    
     
     $output = null;
     if ($data) {
@@ -38,7 +41,6 @@ if (isset($_GET['search'])) {
 
         $output .= ' </div> </article> ';
     }
-
 
     echo $output;
 }

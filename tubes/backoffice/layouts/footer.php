@@ -54,6 +54,14 @@
 <script src="<?= assets("backoffice/plugins/datatables-responsive/js/responsive.bootstrap4.min.js") ?>"></script>
 <script src="<?= assets("backoffice/plugins/toastr/toastr.min.js") ?>"></script>
 <script src="<?= assets("backoffice/plugins/select2/js/select2.full.min.js") ?>"></script>
+<script src="<?= assets("backoffice/plugins/datatables-buttons/js/buttons.bootstrap4.min.js") ?>"></script>
+<script src="<?= assets("backoffice/plugins/datatables-buttons/js/dataTables.buttons.min.js") ?>"></script>
+<script src="<?= assets("backoffice/plugins/datatables-buttons/js/buttons.print.min.js") ?>"></script>
+<script src="<?= assets("backoffice/plugins/datatables-buttons/js/buttons.html5.min.js") ?>"></script>
+<script src="<?= assets("backoffice/plugins/datatables-buttons/js/buttons.colVis.min.js") ?>"></script>
+<script src="<?= assets("backoffice/plugins/pdfmake/pdfmake.min.js") ?>"></script>
+<script src="<?= assets("backoffice/plugins/jszip/jszip.min.js") ?>"></script>
+<script src="<?= assets("backoffice/plugins/pdfmake/vfs_fonts.js") ?>"></script>
 
 <script>
     $('.rupiah').on('keyup', function(e) {
@@ -82,7 +90,12 @@
             "info": true,
             "autoWidth": true,
             "responsive": true,
+            "dom": 'Bfrtip',
+            "buttons": [
+                'csv', 'excel', 'pdf', 'print'
+            ]
         });
+         
 
         toastr.options = {
             "closeButton": false,

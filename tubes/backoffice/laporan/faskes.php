@@ -52,11 +52,11 @@ $no = 1;
         <?php endforeach; ?>
     </table>
     <?php
-    if (isset($_GET['type']) && $_GET['type'] == "excel") {
-
         header("Content-type: application/vnd-ms-excel");
-        header("Content-Disposition: attachment; filename=data_dokter_nhc.xls");
-    }
+        header("Content-Disposition: attachment; filename=data_faskes_nhc.xls");
+    // if (isset($_GET['type']) && $_GET['type'] == "excel") {
+
+    // }
     ?>
     <?php if (isset($_GET['type']) && $_GET['type'] == "pdf") : ?>
         <script>

@@ -13,9 +13,9 @@ class Core
     public static function config(String $value)
     {
         $config = [
-             'app' => [
+            'app' => [
                 'name' => "Nusantara Hospital Center",
-                'url'  => "http://localhost/~koji/pw2022_213040003/tubes",
+                'url'  => "https://nhc.alfarozy.id",
                 'debug' => true // if production set false,
             ],
             'author' => [
@@ -43,10 +43,10 @@ class Core
     private static function connect()
     {
         $db =  [
-            'hostname'  => 'localhost', //database hostname
-            'database'  => 'project_nusantarahospital', //database name
-            'username'  => 'root',    // database username
-            'password'  => 'sandwich', //database password
+            'hostname'  => 'sdb-j.hosting.stackcp.net', //database hostname
+            'database'  => 'nusantarahospital-313930538e', //database name
+            'username'  => 'nhc-project',    // database username
+            'password'  => '#Alfarozy21', //database password
         ];
         try {
             $conn = mysqli_connect($db['hostname'], $db['username'], $db['password'], $db['database']);
